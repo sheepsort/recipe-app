@@ -1,1 +1,24 @@
-<app-recipe-item></app-recipe-item>
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success">New Recipe</button>
+  </div>
+</div>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters" *ngFor="let recipe of recipes">
+        <div class="col-md-4 my-auto">
+            <img
+            [src]="recipe.imagePath"
+            [alt]="recipe.name"
+            class="card-img"
+            />
+        </div>
+        <div class="col-md-8">
+            <div class="card-body text-right">
+                <h5 class="card-title">{{ recipe.name }}</h5>
+                <p class="card-text">{{ recipe.description }}</p>
+                <a href="#" class="btn btn-primary">See Recipe!</a>
+            </div>
+        </div>
+    </div>
+</div>
+
