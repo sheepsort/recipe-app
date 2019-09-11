@@ -1,0 +1,9 @@
+.float-left {
+    padding-right: 50px;
+}
+a {
+    color: black;
+}
+a:hover {
+    color: #1327be;
+}
