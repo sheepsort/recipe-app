@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipe_book/recipe-start/recipe-start.component';
 import { RecipeEdtComponent } from './recipe_book/recipe-edt/recipe-edt.component';
 import { RecipeService } from './recipe_book/recipe_book.service';
+import { AuthComponent } from './auth/auth.component';
+import { LoadingSpinnerComponent } from './shared/styles/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RecipeService } from './recipe_book/recipe_book.service';
     ShoppingListEditComponent,
     DropdownDirective,
     RecipeStartComponent,
-    RecipeEdtComponent
+    RecipeEdtComponent,
+    AuthComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
