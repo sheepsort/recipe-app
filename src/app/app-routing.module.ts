@@ -1,34 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { RecipeBookComponent } from './recipe_book/recipe-book.component';
-import { ShoppingListComponent } from './shopping_list/shopping-list/shopping-list.component';
-import { RecipeStartComponent } from './recipe_book/recipe-start/recipe-start.component';
-import { RecipeDetailComponent } from './recipe_book/recipe-detail/recipe-detail.component';
-import { RecipeEdtComponent } from './recipe_book/recipe-edt/recipe-edt.component';
-import { RecipesResolversService } from './recipe_book/recipes-resolver.service';
-import { AuthComponent } from './auth/auth.component';
-import { AuthGuard } from './auth/auth.guard';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-    {
-        path: 'recipes',
-        component: RecipeBookComponent,
-        canActivate: [AuthGuard],
-        children: [
-            { path: '', component: RecipeStartComponent },
-            { path: 'new', component: RecipeEdtComponent},
-            { path: ':id', component: RecipeDetailComponent, resolve: [RecipesResolversService] },
-            { path: ':id/edit', component: RecipeEdtComponent, resolve: [RecipesResolversService]}
-        ]
-    },
-    { path: 'shopping-list', component: ShoppingListComponent},
-    { path: 'auth', component: AuthComponent}
+    { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+    { path: 'recipes', loadChildren: './recipe_book/recipes.module#RecipesModule' },
+    { path: 'shopping-list', loadChildren: './shopping_list/shopping-list/shopping-list.module#ShoppingListModule'},
+    { path: 'auth', loadChildren: './auth/auth.module#AuthModule' }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
+    imports: [RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules})],
     exports: [RouterModule]
 })
 export class AppRoutingModule {
